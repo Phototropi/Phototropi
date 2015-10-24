@@ -4,14 +4,14 @@ using System.Collections;
 public class Arm_Parameter : MonoBehaviour
 {
 
-    Parameter.Arm parameter = new Parameter.Arm();
+    public float Masse = 1;
+    public float Schwerpunkt = 1;
+    public float Trägheitstensor = 1;
 
     // Use this for initialization
     void Start()
     {
-        parameter.Masse = 1;
-        parameter.Schwerpunkt = 1;
-        parameter.Trägheitstensor = 1;
+        Main.Arm.Add(this.transform);
     }
 
     // Update is called once per frame
