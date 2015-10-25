@@ -17,22 +17,22 @@ public class Camera : MonoBehaviour
     {
         Vector3 dir = new Vector3();
 
-        if (Input.GetKey(KeyCode.W)) dir.z += 1;
-        if (Input.GetKey(KeyCode.S)) dir.z -= 1;
-        if (Input.GetKey(KeyCode.D)) dir.x += 1;
-        if (Input.GetKey(KeyCode.A)) dir.x -= 1;
-        if (Input.GetKey(KeyCode.R)) dir.y += 1;
-        if (Input.GetKey(KeyCode.F)) dir.y -= 1;
+        if (KeyInput.isForward()) dir.z += 1;
+        if (KeyInput.isBack()) dir.z -= 1;
+        if (KeyInput.isRight()) dir.x += 1;
+        if (KeyInput.isLeft()) dir.x -= 1;
+        if (KeyInput.isUp()) dir.y += 1;
+        if (KeyInput.isDown()) dir.y -= 1;
 
-        if (Input.GetMouseButtonDown(0))
+        if (KeyInput.isMousDown())
             down = true;
-        if (Input.GetMouseButtonUp(0))
+        if (KeyInput.isMouseUp())
             down = false;
 
         if (down)
         {
-            float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X");
-            float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y");
+            float newRotationX = KeyInput.RotateCamerainXPos(transform.localEulerAngles.x);
+            float newRotationY = KeyInput.RotateCamerainYPos(transform.localEulerAngles.y);
 
             transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0);
         }
@@ -43,4 +43,5 @@ public class Camera : MonoBehaviour
         transform.Translate(dir * speed * Time.deltaTime);
 
     }
+
 }
