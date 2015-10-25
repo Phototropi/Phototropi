@@ -71,6 +71,7 @@
     <Compile Include="Assets\Main\Camera.cs" />
     <Compile Include="Assets\Main\KeyInput.cs" />
     <Compile Include="Assets\Main\Main.cs" />
+    <Compile Include="Assets\Main\Servo.cs" />
     <Compile Include="Assets\Parameter\Arm_Parameter.cs" />
     <Compile Include="Assets\Parameter\Gelenk_Parameter.cs" />
   </ItemGroup>
