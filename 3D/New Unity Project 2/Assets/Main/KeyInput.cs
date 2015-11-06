@@ -74,12 +74,12 @@ public class KeyInput : MonoBehaviour
 
     public static bool isMouseUp()
     {
-        return Input.GetMouseButtonUp(0);
+        return Input.GetMouseButtonUp(1);
     }
 
     public static bool isMousDown()
     {
-        return Input.GetMouseButtonDown(0);
+        return Input.GetMouseButtonDown(1);
     }
 
     public static bool isDown()

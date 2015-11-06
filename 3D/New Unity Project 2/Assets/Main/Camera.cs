@@ -31,8 +31,8 @@ public class Camera : MonoBehaviour
 
         if (down)
         {
-            float newRotationX = KeyInput.RotateCamerainXPos(transform.localEulerAngles.x);
-            float newRotationY = KeyInput.RotateCamerainYPos(transform.localEulerAngles.y);
+            float newRotationX = KeyInput.RotateCamerainXPos(transform.localEulerAngles.y);
+            float newRotationY = KeyInput.RotateCamerainYPos(transform.localEulerAngles.x);
 
             transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0);
         }
