@@ -19,7 +19,13 @@ public class KeyInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+            EXIT();
+    }
 
+    public void EXIT()
+    {
+        Application.Quit();
     }
 
     public void G1PDown()
