@@ -28,12 +28,16 @@ public class Camera : MonoBehaviour
 
         if (down)
         {
-            float newRotationX = KeyInput.RotateCamerainXPos(transform.localEulerAngles.y);
-            float newRotationY = KeyInput.RotateCamerainYPos(transform.localEulerAngles.x);
+            float newRotationX = KeyInput.RotateCamerainXPos(transform.localEulerAngles.x);
+            float newRotationY = KeyInput.RotateCamerainYPos(transform.localEulerAngles.y);
 
-            transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0);
+            transform.localEulerAngles = new Vector3(newRotationX, newRotationY, 0);
         }
-
+        else
+        {
+            //game pad rotate
+            transform.localEulerAngles = new Vector3(KeyInput.CamRotationV(transform.localEulerAngles.x), KeyInput.CamRotationH(transform.localEulerAngles.y), 0);
+        }
         dir.Normalize();
 
         transform.Translate(dir * speed * Time.deltaTime);
