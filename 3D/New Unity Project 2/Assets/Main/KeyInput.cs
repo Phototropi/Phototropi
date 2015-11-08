@@ -19,8 +19,14 @@ public class KeyInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetAxis("Exit") >= 0.5)
             EXIT();
+
+        if (Input.GetAxis("G0") >= 0.5)
+            Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = Input.GetAxis("Rotate");
+        if (Input.GetAxis("G1") >= 0.5)
+            Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = Input.GetAxis("Rotate");
+
     }
 
     public void EXIT()
@@ -92,42 +98,69 @@ public class KeyInput : MonoBehaviour
     {
         if (DownBTN)
             return true;
-        return Input.GetKey(KeyCode.F);
+        return Input.GetAxis("Depth") <= -0.5;
     }
 
     public static bool isUp()
     {
         if (UpBTN)
             return true;
-        return Input.GetKey(KeyCode.R);
+        return Input.GetAxis("Depth") <= 0.5;
     }
 
     public static bool isLeft()
     {
         if (LeftBTN)
             return true;
-        return Input.GetKey(KeyCode.A);
+        return Input.GetAxis("Horizontal") <= -0.5;
     }
 
     public static bool isRight()
     {
         if (RightBTN)
             return true;
-        return Input.GetKey(KeyCode.D);
+        return Input.GetAxis("Horizontal") >= 0.5;
     }
 
     public static bool isBack()
     {
         if (BackBTN)
             return true;
-        return Input.GetKey(KeyCode.S);
+        return Input.GetAxis("Vertical") <= -0.5;
     }
 
     public static bool isForward()
     {
         if (ForwardBTN)
             return true;
-        return Input.GetKey(KeyCode.W);
+        return Input.GetAxis("Vertical") >= 0.5;
+    }
+
+    public static float Vertical()
+    {
+        if (ForwardBTN)
+            return 1;
+        if (BackBTN)
+            return -1;
+        return Input.GetAxis("Vertical");
+    }
+
+    public static float Horizontal()
+    {
+        if (RightBTN)
+            return 1;
+        if (LeftBTN)
+            return -1;
+        return Input.GetAxis("Horizontal");
+    }
+
+    public static float Depth()
+    {
+        if (UpBTN)
+            return 1;
+        if (DownBTN)
+            return -1;
+        return Input.GetAxis("Depth");
     }
 
     public void setBTN(string keyAndValue)

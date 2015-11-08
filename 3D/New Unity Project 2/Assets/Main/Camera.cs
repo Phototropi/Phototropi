@@ -17,12 +17,9 @@ public class Camera : MonoBehaviour
     {
         Vector3 dir = new Vector3();
 
-        if (KeyInput.isForward()) dir.z += 1;
-        if (KeyInput.isBack()) dir.z -= 1;
-        if (KeyInput.isRight()) dir.x += 1;
-        if (KeyInput.isLeft()) dir.x -= 1;
-        if (KeyInput.isUp()) dir.y += 1;
-        if (KeyInput.isDown()) dir.y -= 1;
+        dir.x = KeyInput.Horizontal();
+        dir.y = KeyInput.Depth();
+        dir.z = KeyInput.Vertical();
 
         if (KeyInput.isMousDown())
             down = true;
