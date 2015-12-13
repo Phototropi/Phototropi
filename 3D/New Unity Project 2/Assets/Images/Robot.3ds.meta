@@ -1,0 +1,108 @@
+fileFormatVersion: 2
+guid: 6d0eb55ea513b4943808c6185216f529
+timeCreated: 1449928334
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Robot - Pass
+    100004: Robot - Robo
+    100006: Robot - Robo.000
+    100008: Robot - Robo.001
+    100010: Robot - Robo.002
+    100012: Robot - Robo.003
+    100014: Robot - Robo.004
+    400000: //RootNode
+    400002: Robot - Pass
+    400004: Robot - Robo
+    400006: Robot - Robo.000
+    400008: Robot - Robo.001
+    400010: Robot - Robo.002
+    400012: Robot - Robo.003
+    400014: Robot - Robo.004
+    2300000: Robot - Pass
+    2300002: Robot - Robo
+    2300004: Robot - Robo.000
+    2300006: Robot - Robo.001
+    2300008: Robot - Robo.002
+    2300010: Robot - Robo.003
+    2300012: Robot - Robo.004
+    3300000: Robot - Pass
+    3300002: Robot - Robo
+    3300004: Robot - Robo.000
+    3300006: Robot - Robo.001
+    3300008: Robot - Robo.002
+    3300010: Robot - Robo.003
+    3300012: Robot - Robo.004
+    4300000: Robot - Robo
+    4300002: Robot - Robo.000
+    4300004: Robot - Robo.001
+    4300006: Robot - Robo.002
+    4300008: Robot - Robo.003
+    4300010: Robot - Robo.004
+    4300012: Robot - Pass
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

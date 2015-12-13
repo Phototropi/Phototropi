@@ -7,6 +7,8 @@ public class Main : MonoBehaviour
     public static List<Transform> Gelenk = new List<Transform>();
     public static List<Transform> Arm = new List<Transform>();
 
+    public static GameObject ConnectionMenu;
+
 
     // Use this for initialization
     void Start()

@@ -10,10 +10,12 @@ public class KeyInput : MonoBehaviour
     static bool ForwardBTN = false;
     static bool BackBTN = false;
 
+    private bool isConnectionShowing=false;
+
     // Use this for initialization
     void Start()
     {
-
+        Main.ConnectionMenu.SetActive(isConnectionShowing);
     }
 
     // Update is called once per frame
@@ -186,5 +188,12 @@ public class KeyInput : MonoBehaviour
             case "ForwardBTN": KeyInput.ForwardBTN = value; break;
             case "BackBTN": KeyInput.BackBTN = value; break;
         }
+    }
+
+    public void ConnectBtn()
+    {
+        isConnectionShowing = !isConnectionShowing;
+        Main.ConnectionMenu.SetActive(isConnectionShowing);
+        Main.ConnectionMenu.ge.transform.localPosition=new Vector3(0, 0, 0);
     }
 }
