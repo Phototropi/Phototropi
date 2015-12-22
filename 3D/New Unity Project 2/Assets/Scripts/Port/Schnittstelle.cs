@@ -20,6 +20,17 @@ class COMport
         return Log.ToArray();
     }
 
+    public static string getLastLog(int numberOfLogs)
+    {
+        string temp = "";
+        if(Log.Count>0)
+        for (int i = 0; i < (int)((Log.Count() > numberOfLogs) ? (numberOfLogs) : (Log.Count())); i++)
+        {
+            temp += Log[Log.Count() - i-1];
+        }
+        return temp;
+    }
+
     private static void setLog(string info)
     {
         Log.Add(DateTime.Now.ToShortTimeString() + ": " + info + Environment.NewLine);
@@ -166,5 +177,6 @@ class COMport
     {
         return info;
     }
+
 }
 

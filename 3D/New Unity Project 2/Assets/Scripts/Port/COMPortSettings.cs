@@ -22,7 +22,7 @@ public class COMPortSettings : MonoBehaviour
 
     private void DataReceived(string data)
     {
-        ScrollViews[0].text = data;
+
     }
 
     private static void Init()
@@ -35,6 +35,7 @@ public class COMPortSettings : MonoBehaviour
         {
             Dropdowns[1].options.Add(new Dropdown.OptionData(item));
         }
+        Dropdowns[1].value = 0;
     }
 
     // Update is called once per frame
@@ -46,6 +47,8 @@ public class COMPortSettings : MonoBehaviour
             init = false;
         }
         COMport.ReceiveData();
+        ScrollViews[0].text = COMport.getLastLog(10);
+
     }
 
     public void ConnectBTN(int ID)
