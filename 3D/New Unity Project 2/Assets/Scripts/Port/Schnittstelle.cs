@@ -23,11 +23,11 @@ class COMport
     public static string getLastLog(int numberOfLogs)
     {
         string temp = "";
-        if(Log.Count>0)
-        for (int i = 0; i < (int)((Log.Count() > numberOfLogs) ? (numberOfLogs) : (Log.Count())); i++)
-        {
-            temp += Log[Log.Count() - i-1];
-        }
+        if (Log.Count > 0)
+            for (int i = 0; i < (int)((Log.Count() > numberOfLogs) ? (numberOfLogs) : (Log.Count())); i++)
+            {
+                temp += Log[Log.Count() - i - 1];
+            }
         return temp;
     }
 
@@ -152,13 +152,13 @@ class COMport
         switch (data[0])
         {
             case "L0": Light[0] = double.Parse(data[1]); break;
-            case "L1": Light[0] = double.Parse(data[1]); break;
-            case "L2": Light[0] = double.Parse(data[1]); break;
-            case "L3": Light[0] = double.Parse(data[1]); break;
-            case "L4": Light[0] = double.Parse(data[1]); break;
+            case "L1": Light[1] = double.Parse(data[1]); break;
+            case "L2": Light[2] = double.Parse(data[1]); break;
+            case "L3": Light[3] = double.Parse(data[1]); break;
+            case "L4": Light[4] = double.Parse(data[1]); break;
 
-            case "S0": Light[0] = double.Parse(data[1]); break;
-            case "S1": Light[0] = double.Parse(data[1]); break;
+            case "S0": ServoAngle[0] = double.Parse(data[1]); break;
+            case "S1": ServoAngle[1] = double.Parse(data[1]); break;
             default: info = input; break;
         }
     }
@@ -173,7 +173,7 @@ class COMport
         return Light[ID];
     }
 
-    public static string getInfo(int ID)
+    public static string getInfo()
     {
         return info;
     }

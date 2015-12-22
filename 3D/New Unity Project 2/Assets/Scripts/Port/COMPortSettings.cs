@@ -41,13 +41,16 @@ public class COMPortSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (init&& Dropdowns.Count>0)
+        if (init && Dropdowns.Count > 0)
         {
             Init();
             init = false;
         }
+
         COMport.ReceiveData();
-        ScrollViews[0].text = COMport.getLastLog(10);
+
+        if (ScrollViews.Count > 0)
+            ScrollViews[0].text = COMport.getLastLog(10);
 
     }
 
