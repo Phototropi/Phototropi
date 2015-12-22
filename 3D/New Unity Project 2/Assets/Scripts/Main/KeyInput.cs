@@ -194,6 +194,6 @@ public class KeyInput : MonoBehaviour
     {
         isConnectionShowing = !isConnectionShowing;
         Main.ConnectionMenu.SetActive(isConnectionShowing);
-        Main.ConnectionMenu.ge.transform.localPosition=new Vector3(0, 0, 0);
+        Main.ConnectionMenu.transform.localPosition=new Vector3(0, 0, 0);
     }
 }
