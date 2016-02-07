@@ -6,6 +6,7 @@ public class Servo : MonoBehaviour
 {
 
     public int ID = 0;
+    public char Direktion = 'Y';
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,17 @@ public class Servo : MonoBehaviour
         if (COMport.isConnected())
             transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + COMport.getServoAngle(ID);
         else
-            transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.localEulerAngles.y).ToString();
+            if (Direktion == 'X' || Direktion == 'x')
+        {
+            transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.x).ToString();
+        }
+        if (Direktion == 'Y' || Direktion == 'y')
+        {
+            transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.y).ToString();
+        }
+        if (Direktion == 'Z' || Direktion == 'z')
+        {
+            transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.z).ToString();
+        }
     }
 }

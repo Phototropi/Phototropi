@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Camera : MonoBehaviour
 {
@@ -40,7 +39,6 @@ public class Camera : MonoBehaviour
         }
         dir.Normalize();
 
-        transform.Translate(dir * speed * Time.deltaTime);
         transform.Translate(dir * speed * Time.deltaTime);
 
     }
