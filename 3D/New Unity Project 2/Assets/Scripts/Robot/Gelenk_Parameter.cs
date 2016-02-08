@@ -23,8 +23,8 @@ public class Gelenk_Parameter : MonoBehaviour
         if (!COMport.isConnected())
         {
             transform.Rotate(RotateSpeed);
-            RotateAngles = transform.eulerAngles;
         }
-        transform.eulerAngles = RotateAngles;
+        else
+            transform.eulerAngles = RotateAngles;
     }
 }
