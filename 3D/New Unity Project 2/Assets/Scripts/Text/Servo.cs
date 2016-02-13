@@ -24,10 +24,12 @@ public class Servo : MonoBehaviour
         {
             transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.x).ToString();
         }
+        else
         if (Direktion == 'Y' || Direktion == 'y')
         {
             transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.y).ToString();
         }
+        else
         if (Direktion == 'Z' || Direktion == 'z')
         {
             transform.GetChild(0).GetComponent<Text>().text = "Winkel:" + (Main.Gelenk[ID].GetComponent<Gelenk_Parameter>().transform.eulerAngles.z).ToString();

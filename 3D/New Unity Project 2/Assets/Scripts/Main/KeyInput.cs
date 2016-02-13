@@ -10,7 +10,7 @@ public class KeyInput : MonoBehaviour
     static bool ForwardBTN = false;
     static bool BackBTN = false;
 
-    private bool isConnectionShowing=false;
+    private bool isConnectionShowing = false;
 
     // Use this for initialization
     void Start()
@@ -25,9 +25,9 @@ public class KeyInput : MonoBehaviour
             EXIT();
 
         if (Input.GetAxis("G0In") >= 0.5)
-            Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = Input.GetAxis("Rotate");
+            Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed = Input.GetAxis("Rotate");
         if (Input.GetAxis("G1In") >= 0.5)
-            Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = Input.GetAxis("Rotate");
+            Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed = Input.GetAxis("Rotate");
 
     }
 
@@ -38,42 +38,42 @@ public class KeyInput : MonoBehaviour
 
     public void G1PDown()
     {
-        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 1;
+        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed = 1;
     }
 
     public void G1MDown()
     {
-        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = -1;
+        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed = -1;
     }
 
     public void G0PDown()
     {
-        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 1;
+        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed = 1;
     }
 
     public void G0MDown()
     {
-        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = -1;
+        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed = -1;
     }
 
     public void G1PUp()
     {
-        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 0;
+        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed = 0;
     }
 
     public void G1MUp()
     {
-        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 0;
+        Main.Gelenk[1].GetComponent<Gelenk_Parameter>().RotateSpeed = 0;
     }
 
     public void G0PUp()
     {
-        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 0;
+        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed = 0;
     }
 
     public void G0MUp()
     {
-        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed.y = 0;
+        Main.Gelenk[0].GetComponent<Gelenk_Parameter>().RotateSpeed = 0;
     }
 
     public static float RotateCamerainXPos(float x)
@@ -194,6 +194,6 @@ public class KeyInput : MonoBehaviour
     {
         isConnectionShowing = !isConnectionShowing;
         Main.ConnectionMenu.SetActive(isConnectionShowing);
-        Main.ConnectionMenu.transform.localPosition=new Vector3(0, 0, 0);
+        Main.ConnectionMenu.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

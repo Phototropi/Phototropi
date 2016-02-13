@@ -11,9 +11,11 @@ class COMport
     public static event Received DataReceived;
 
     private static double[] ServoAngle = new double[2];
+    private static double[] ServoAngleTemp = new double[2];
     private static double[] Light = new double[5];
     private static string info = "";
     private static string ReceivedTemp = "";
+    private static Int16 ServoCount = 0;
 
     public string[] getLog()
     {
@@ -105,6 +107,8 @@ class COMport
                     {
                         sport_DataReceived(ReceivedTemp, null);
                         ReceivedTemp = "";
+                        sport.DiscardInBuffer();
+                        sport.DiscardOutBuffer();
                     }
                 }
         }
@@ -157,14 +161,19 @@ class COMport
             case "L3": Light[3] = double.Parse(data[1]); break;
             case "L4": Light[4] = double.Parse(data[1]); break;
 
-            case "S0": ServoAngle[0] = double.Parse(data[1]); break;
-            case "S1": ServoAngle[1] = double.Parse(data[1]); break;
+            case "S0": ServoAngleTemp[0] = double.Parse(data[1]); ServoCount++; break;
+            case "S1": ServoAngleTemp[1] = double.Parse(data[1]); ServoCount++; break;
             default: info = input; break;
         }
     }
 
     public static double getServoAngle(int ID)
     {
+        if (ServoCount > 1)
+        {
+            ServoAngleTemp.CopyTo(ServoAngle, 0);
+            ServoCount = 0;
+        }
         return ServoAngle[ID];
     }
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Gelenk_Parameter : MonoBehaviour
 {
@@ -7,8 +8,16 @@ public class Gelenk_Parameter : MonoBehaviour
     public Vector3 NullWinkel = new Vector3(0, 0, 0);
     public Vector3 LimitWinkel = new Vector3(0, 0, 0);
     public bool RotationsBewegung = true;
-    public Vector3 RotateSpeed = new Vector3(0, 0, 0);
+    public float RotateSpeed = 0;
+    public Vector3 RotateVector = new Vector3(0, 0, 0);
     public Vector3 RotateAngles = new Vector3(0, 0, 0);
+    public char Direktion = 'Y';
+    private double Angle = 0;
+    private double TempAngle = 0;
+    private double OldAngle = 0;
+    private int IntervalCounter = 0;
+    private int Interval = 1;
+
 
     // Use this for initialization
     void Start()
@@ -22,9 +31,46 @@ public class Gelenk_Parameter : MonoBehaviour
     {
         if (!COMport.isConnected())
         {
-            transform.Rotate(RotateSpeed);
-            RotateAngles = transform.eulerAngles;
+            if (Direktion == 'X' || Direktion == 'x')
+            {
+                RotateVector.x = RotateSpeed;
+            }
+            if (Direktion == 'Y' || Direktion == 'y')
+            {
+                RotateVector.y = RotateSpeed;
+            }
+            if (Direktion == 'Z' || Direktion == 'z')
+            {
+                RotateVector.z = RotateSpeed;
+            }
+            transform.Rotate(RotateVector);
+            RotateAngles = transform.localEulerAngles;
         }
-        transform.eulerAngles = RotateAngles;
+        else
+        {
+            if (Direktion == 'X' || Direktion == 'x')
+            {
+                RotateAngles.x = (float)Angle;
+            }
+            if (Direktion == 'Y' || Direktion == 'y')
+            {
+                RotateAngles.y = (float)Angle;
+            }
+            if (Direktion == 'Z' || Direktion == 'z')
+            {
+                RotateAngles.z = (float)Angle;
+            }
+            Angle += Math.Abs(COMport.getServoAngle(ID) - OldAngle) / Interval;
+            if (TempAngle != COMport.getServoAngle(ID))
+            {
+                Interval = IntervalCounter;
+                IntervalCounter = 0;
+                OldAngle = TempAngle;
+                TempAngle = COMport.getServoAngle(ID);
+                Angle = COMport.getServoAngle(ID);
+            }
+            IntervalCounter++;
+            transform.localEulerAngles = RotateAngles;
+        }
     }
 }
