@@ -114,7 +114,7 @@ class COMport
         }
         catch (TimeoutException)
         { }
-        catch (Exception ex)
+        catch (Exception)
         {
             throw;
         }

@@ -31,7 +31,6 @@ public class Gelenk_Parameter : MonoBehaviour
     {
         if (!COMport.isConnected())
         {
-<<<<<<< HEAD
             if (Direktion == 'X' || Direktion == 'x')
             {
                 RotateVector.x = RotateSpeed;
@@ -73,11 +72,10 @@ public class Gelenk_Parameter : MonoBehaviour
             IntervalCounter++;
             transform.localEulerAngles = RotateAngles;
         }
-=======
-            transform.Rotate(RotateSpeed);
-        }
-        else
-            transform.eulerAngles = RotateAngles;
->>>>>>> 8e96de23a7af063993f7a991a902bea6695d25a9
+        //    transform.Rotate(RotateSpeed);
+        //}
+        //else
+        //    transform.eulerAngles = RotateAngles;
+
     }
 }
