@@ -16,6 +16,7 @@ class COMport
     private static string info = "";
     private static string ReceivedTemp = "";
     private static Int16 ServoCount = 0;
+    private static bool Ask = true;
 
     public string[] getLog()
     {
@@ -101,17 +102,18 @@ class COMport
             {
                 if (sport.IsOpen)
                 {
-                    Send("1");
-                    var tes = (char)sport.ReadChar();
+                    if (Ask)
+                        Send("1");
 
+                    var tes = (char)sport.ReadChar();
+                    Ask = false;
                     if (tes != '\n')
                         ReceivedTemp += tes.ToString();
                     else
                     {
                         sport_DataReceived(ReceivedTemp, null);
+                        Ask = true;
                         ReceivedTemp = "";
-                        sport.DiscardInBuffer();
-                        sport.DiscardOutBuffer();
                     }
                 }
             }
