@@ -96,9 +96,12 @@ class COMport
 
         try
         {
+
             if (sport != null)
+            {
                 if (sport.IsOpen)
                 {
+                    Send("1");
                     var tes = (char)sport.ReadChar();
 
                     if (tes != '\n')
@@ -111,6 +114,7 @@ class COMport
                         sport.DiscardOutBuffer();
                     }
                 }
+            }
         }
         catch (TimeoutException)
         { }

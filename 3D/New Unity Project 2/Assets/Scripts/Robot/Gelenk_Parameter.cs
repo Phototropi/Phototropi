@@ -60,7 +60,7 @@ public class Gelenk_Parameter : MonoBehaviour
             {
                 RotateAngles.z = (float)Angle;
             }
-            Angle += Math.Abs(COMport.getServoAngle(ID) - OldAngle) / Interval;
+            Angle = COMport.getServoAngle(ID); //- OldAngle / Interval;
             if (TempAngle != COMport.getServoAngle(ID))
             {
                 Interval = IntervalCounter;
