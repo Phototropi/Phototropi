@@ -62,17 +62,18 @@ public class Gelenk_Parameter : MonoBehaviour
             }
             double schritt = (COMport.getServoAngle(ID) - OldAngle) / 12;//Interval;
 
-            //if (schritt > 0)
-            //    if (Angle + schritt >= COMport.getServoAngle(ID))
-            //        Angle = COMport.getServoAngle(ID);
-            //    else
-            //        Angle += schritt;
+            Angle += schritt;
 
-            //if (schritt < 0)
-            //    if (Angle + schritt <= COMport.getServoAngle(ID))
-            //        Angle = COMport.getServoAngle(ID);
-            //    else
-                    Angle += schritt;
+            if (schritt > 0)
+                if (Angle >= COMport.getServoAngle(ID))
+                    Angle = COMport.getServoAngle(ID);
+
+
+            if (schritt < 0)
+                if (Angle <= COMport.getServoAngle(ID))
+                    Angle = COMport.getServoAngle(ID);
+
+
 
             //if (Math.Round(Angle, 4) == Math.Round(COMport.getServoAngle(ID)))
             //    Angle = COMport.getServoAngle(ID);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using System.IO.Ports;
+using System.Threading;
 
 public class COMPortSettings : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class COMPortSettings : MonoBehaviour
     public static List<string> PortNames = new List<string>();
     private static string port = "";
     private static bool init = true;
+    private static Thread thread;
+    private static bool getingData = false;
 
     // Use this for initialization
     void Start()
@@ -47,7 +50,17 @@ public class COMPortSettings : MonoBehaviour
             init = false;
         }
 
-        COMport.ReceiveData();
+        if (!getingData)
+        {
+            thread = new Thread(delegate ()
+            {
+                getingData = true;
+                COMport.ReceiveData();
+                getingData = false;
+            });
+            thread.Start();
+        }
+
 
         if (ScrollViews.Count > 0)
             ScrollViews[0].text = COMport.getLastLog(10);
