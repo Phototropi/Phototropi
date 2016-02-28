@@ -102,8 +102,8 @@ class COMport
             {
                 if (sport.IsOpen)
                 {
-                    if (Ask)
-                        Send("1");
+                   if (Ask)
+                       Send("1");
 
                     var tes = (char)sport.ReadChar();
                     Ask = false;

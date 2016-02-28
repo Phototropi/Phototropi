@@ -17,7 +17,7 @@ public class Gelenk_Parameter : MonoBehaviour
     private double OldAngle = 0;
     private int IntervalCounter = 0;
     private int Interval = 1;
-
+    private DateTime time = DateTime.Now;
 
     // Use this for initialization
     void Start()
@@ -60,14 +60,29 @@ public class Gelenk_Parameter : MonoBehaviour
             {
                 RotateAngles.z = (float)Angle;
             }
-                Angle += (COMport.getServoAngle(ID) - OldAngle) / Interval;
+            double schritt = (COMport.getServoAngle(ID) - OldAngle) / 12;//Interval;
+
+            //if (schritt > 0)
+            //    if (Angle + schritt >= COMport.getServoAngle(ID))
+            //        Angle = COMport.getServoAngle(ID);
+            //    else
+            //        Angle += schritt;
+
+            //if (schritt < 0)
+            //    if (Angle + schritt <= COMport.getServoAngle(ID))
+            //        Angle = COMport.getServoAngle(ID);
+            //    else
+                    Angle += schritt;
+
+            //if (Math.Round(Angle, 4) == Math.Round(COMport.getServoAngle(ID)))
+            //    Angle = COMport.getServoAngle(ID);
+
             if (TempAngle != COMport.getServoAngle(ID))
             {
                 Interval = IntervalCounter;
                 IntervalCounter = 0;
                 OldAngle = TempAngle;
                 TempAngle = COMport.getServoAngle(ID);
-                Angle = COMport.getServoAngle(ID);
             }
             IntervalCounter++;
             transform.localEulerAngles = RotateAngles;
