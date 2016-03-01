@@ -102,11 +102,13 @@ class COMport
             {
                 if (sport.IsOpen)
                 {
-                   if (Ask)
-                       Send("1");
+                    if (Ask)
+                        Send("1");
 
                     var tes = (char)sport.ReadChar();
-                    Ask = false;
+                    if (tes=='\0')
+                        Ask = false;
+
                     if (tes != '\n')
                         ReceivedTemp += tes.ToString();
                     else
@@ -161,11 +163,11 @@ class COMport
         string[] data = input.Split(':');
         switch (data[0])
         {
-            case "L0": Light[0] = double.Parse(data[1]); break;
-            case "L1": Light[1] = double.Parse(data[1]); break;
-            case "L2": Light[2] = double.Parse(data[1]); break;
-            case "L3": Light[3] = double.Parse(data[1]); break;
-            case "L4": Light[4] = double.Parse(data[1]); break;
+            case "L1": Light[0] = double.Parse(data[1]); break;
+            case "L2": Light[1] = double.Parse(data[1]); break;
+            case "L3": Light[2] = double.Parse(data[1]); break;
+            case "L4": Light[3] = double.Parse(data[1]); break;
+            case "L5": Light[4] = double.Parse(data[1]); break;
 
             case "S0": ServoAngleTemp[0] = double.Parse(data[1]); ServoCount++; break;
             case "S1": ServoAngleTemp[1] = double.Parse(data[1]); ServoCount++; break;
