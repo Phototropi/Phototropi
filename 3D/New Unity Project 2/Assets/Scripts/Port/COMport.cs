@@ -106,7 +106,9 @@ class COMport
                         Send("1");
 
                     var tes = (char)sport.ReadChar();
-                    if (tes=='\0')
+                    //int temp = sport.ReadByte();
+                    //var tes = Convert.ToChar(temp);
+                    if (tes == '\0')
                         Ask = false;
 
                     if (tes != '\n')
@@ -137,7 +139,7 @@ class COMport
 
     private static void serialport_connect(String port, int baudrate, Parity parity, int databits, StopBits stopbits)
     {
-        sport = new SerialPort(port, baudrate, parity, databits, stopbits);
+        sport = new SerialPort("\\\\.\\"+port, baudrate, parity, databits, stopbits);
         try
         {
 
