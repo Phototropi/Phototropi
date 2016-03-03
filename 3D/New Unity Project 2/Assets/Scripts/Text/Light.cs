@@ -5,6 +5,13 @@ using UnityEngine.UI;
 public class Light : MonoBehaviour
 {
     public int ID = 0;
+    private string[] name = {
+        "Center",
+        "Top",
+        "Bottom",
+        "Left",
+        "Right",
+    };
     // Use this for initialization
     void Start()
     {
@@ -17,9 +24,9 @@ public class Light : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             if (COMport.isConnected())
-                transform.GetChild(i).GetComponent<Text>().text = "Sensor " + i + ":" + COMport.getLight(i);
+                transform.GetChild(i).GetComponent<Text>().text = name[i] + ": " + COMport.getLight(i);
             else
-                transform.GetChild(i).GetComponent<Text>().text = "Sensor " + i + ":" + 0;
+                transform.GetChild(i).GetComponent<Text>().text = name[i] + ": " + 0;
         }
     }
 }
