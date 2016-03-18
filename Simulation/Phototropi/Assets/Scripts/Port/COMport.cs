@@ -97,28 +97,57 @@ class COMport
 
         try
         {
-
             if (sport != null)
             {
                 if (sport.IsOpen)
                 {
-                    if (Ask)
-                        Send("1");
-
-                    var tes = (char)sport.ReadChar();
-                    //int temp = sport.ReadByte();
-                    //var tes = Convert.ToChar(temp);
-                    if (tes == '\0')
-                        Ask = false;
-
-                    if (tes != '\n')
-                        ReceivedTemp += tes.ToString();
-                    else
+                    //Wait till block begins
+                    char input = ' ';
+                    do
                     {
-                        sport_DataReceived(ReceivedTemp, null);
-                        Ask = true;
-                        ReceivedTemp = "";
+                        try
+                        {
+                            input = (char)sport.ReadChar();
+                        }
+
+                        catch (Exception) { }
+                    } while (input != '{');
+                    input = (char)sport.ReadChar(); // new line
+
+                    //read lines till block end and get information of Servo and lights
+                    while (input != '}')
+                    {
+                        string ReceivedData = "";
+                        do
+                        {
+                            input = (char)sport.ReadChar();
+                            ReceivedData += input;
+                        }
+                        while (input != '\n');
+                        sport_DataReceived(ReceivedData, null);
                     }
+                    //Old receive function, works with Test Code, but it has problems with finished robot.
+                    //{
+                    ////if (Ask)
+                    ////    Send("1");
+
+
+                    ////int temp = sport.ReadByte();
+                    ////var tes = Convert.ToChar(temp);
+                    //if (tes == '\0')
+                    //    Ask = false;
+
+                    //if (tes != '\n')
+                    //    ReceivedTemp += tes.ToString();
+                    //else
+                    //{
+                    //    sport_DataReceived(ReceivedTemp, null);
+                    //    while ()
+                    //    { }
+                    //    //Ask = true;
+                    //    ReceivedTemp = "";
+                    //}
+                    //}
                 }
             }
         }
@@ -139,7 +168,7 @@ class COMport
 
     private static void serialport_connect(String port, int baudrate, Parity parity, int databits, StopBits stopbits)
     {
-        sport = new SerialPort("\\\\.\\"+port, baudrate, parity, databits, stopbits);
+        sport = new SerialPort("\\\\.\\" + port, baudrate, parity, databits, stopbits);
         try
         {
 
@@ -157,7 +186,7 @@ class COMport
 
     public static void sport_DataReceived(object sender, SerialDataReceivedEventArgs e)
     {
-        string input = (string)sender;//sport.ReadExisting();
+        string input = (string)sender;
         setLog("Received: " + input);
 
         DataReceived(input);
@@ -171,8 +200,8 @@ class COMport
             case "L4": Light[3] = double.Parse(data[1]); break;
             case "L5": Light[4] = double.Parse(data[1]); break;
 
-            case "S0": ServoAngleTemp[0] = double.Parse(data[1]); ServoCount++; break;
-            case "S1": ServoAngleTemp[1] = double.Parse(data[1]); ServoCount++; break;
+            case "S1": ServoAngleTemp[0] = double.Parse(data[1]); ServoCount++; break;
+            case "S0": ServoAngleTemp[1] = -double.Parse(data[1]); ServoCount++; break;
             default: info = input; break;
         }
     }
