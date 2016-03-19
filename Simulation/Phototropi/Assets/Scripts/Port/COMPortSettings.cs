@@ -28,6 +28,12 @@ public class COMPortSettings : MonoBehaviour
 
     }
 
+    void OnApplicationQuit()
+    {
+        thread.Abort();
+        COMport.Disconnect();
+    }
+
     private static void Init()
     {
         PortNames.Clear();
@@ -52,6 +58,9 @@ public class COMPortSettings : MonoBehaviour
 
         if (!getingData)
         {
+            if (thread != null)
+                if (thread.IsAlive)
+                    thread.Abort();
             thread = new Thread(delegate ()
             {
                 getingData = true;
@@ -71,7 +80,7 @@ public class COMPortSettings : MonoBehaviour
     {
         switch (Dropdowns[ID].value)
         {
-            case 0: COMport.Disconnect(); break;
+            case 0: { thread.Abort(); COMport.Disconnect(); thread.Abort(); getingData = false; } break;
             case 1: COMport.Connect(port); break;
             default: break;
         }
